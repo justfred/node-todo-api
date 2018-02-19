@@ -70,3 +70,15 @@ describe('GET /todos', () => {
       .end(done);
   });
 });
+
+describe('GET /todos/id', () => {
+  it('should get todo by id', (done) => {
+    request(app)
+      .get('/todos/5a8b4b0093812ab31f09cef9')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.todos.length).toBe(2);
+      })
+      .end(done);
+  });
+});
