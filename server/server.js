@@ -1,4 +1,6 @@
-const _ = require('lodash')
+require('./config/config');
+
+const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
@@ -8,7 +10,7 @@ var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
 
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -70,7 +72,6 @@ app.delete('/todos/:id', (req, res) => {
 
 app.patch('/todos/:id', (req, res) => {
   var id = req.params.id;
-  //select a subset of what the user sent us
   var body = _.pick(req.body, ['text', 'completed']);
 
   if (!ObjectID.isValid(id)) {
@@ -78,7 +79,7 @@ app.patch('/todos/:id', (req, res) => {
   }
 
   if (_.isBoolean(body.completed) && body.completed) {
-    body.completedAt = new Date().getTime; //Javascript timestamp
+    body.completedAt = new Date().getTime();
   } else {
     body.completed = false;
     body.completedAt = null;
@@ -92,7 +93,7 @@ app.patch('/todos/:id', (req, res) => {
     res.send({todo});
   }).catch((e) => {
     res.status(400).send();
-  });
+  })
 });
 
 app.listen(port, () => {
