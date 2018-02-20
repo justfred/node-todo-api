@@ -5,7 +5,7 @@ const {ObjectID} = require('mongodb');
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
-const todosSeed = [{
+const todos = [{
   _id: new ObjectID(),
   text: 'First test todo'
 }, {
@@ -13,15 +13,14 @@ const todosSeed = [{
   text: 'Second test todo'
 }];
 
-//clear the database every time
 beforeEach((done) => {
   Todo.remove({}).then(() => {
-    return Todo.insertMany(todosSeed);
+    return Todo.insertMany(todos);
   }).then(() => done());
 });
 
 describe('POST /todos', () => {
-  it ('should create a new todo', (done) => {
+  it('should create a new todo', (done) => {
     var text = 'Test todo text';
 
     request(app)
@@ -75,31 +74,28 @@ describe('GET /todos', () => {
 });
 
 describe('GET /todos/:id', () => {
-  //good id
   it('should return todo doc', (done) => {
     request(app)
-      .get(`/todos/${todosSeed[0]._id.toHexString()}`)
+      .get(`/todos/${todos[0]._id.toHexString()}`)
       .expect(200)
       .expect((res) => {
-        expect(res.body.todo.text).toBe(todosSeed[0].text);
+        expect(res.body.todo.text).toBe(todos[0].text);
       })
       .end(done);
   });
-  //bad id
+
   it('should return 404 if todo not found', (done) => {
-    // const notfID = '5a8b4b0093812ab31f09cef5';
-    const notfID = new ObjectID().toHexString();
+    var hexId = new ObjectID().toHexString();
+
     request(app)
-      .get(`/todos/${notfID}`)
+      .get(`/todos/${hexId}`)
       .expect(404)
       .end(done);
   });
-  //invalid id
-  it('should return 404 if bad id', (done) => {
-//    const badID = '5a8b4b0093812ab31f09cef51111';
-    const badID = new ObjectID().toHexString() + '111';
+
+  it('should return 404 for non-object ids', (done) => {
     request(app)
-      .get(`/todos/${badID}`)
+      .get('/todos/123abc')
       .expect(404)
       .end(done);
   });

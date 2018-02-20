@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-//model - returns a constructor function
 var Todo = mongoose.model('Todo', {
   text: {
     type: String,
