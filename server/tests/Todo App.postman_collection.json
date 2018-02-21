@@ -1,0 +1,344 @@
+{
+	"id": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+	"name": "Todo App",
+	"description": "",
+	"order": [
+		"57aac997-7458-d2cb-48e4-b03ab7362e9e",
+		"a354be18-d1bf-0877-d2b5-7a1fcb71cb5a",
+		"2ae877a5-58f5-29a2-1687-d225253ef744",
+		"fa9bc8e1-3ba9-a500-34ec-e49a9eb0d6cc",
+		"6a2f947d-8066-f21e-6092-c453d5bef66d",
+		"adf5bfb9-ffa1-b203-9e68-76c2c6fa8653",
+		"12c14b7c-9e55-2069-0496-cc9bac40226e",
+		"a433330d-451e-8e50-8339-cc00d58518b8",
+		"c6a5e31b-1555-1d7c-2814-d584f99d52ff"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1519077204866,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "12c14b7c-9e55-2069-0496-cc9bac40226e",
+			"headers": "x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YThjOTY2MDEzN2JlYzM2NzRlZTRkNTIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTE5MTYyOTc2fQ.N0hfU2StMbAVcoOoGEeR_OEkeGwa8trWeK25i0PI9w0\n",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YThjOTY2MDEzN2JlYzM2NzRlZTRkNTIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTE5MTYyOTc2fQ.N0hfU2StMbAVcoOoGEeR_OEkeGwa8trWeK25i0PI9w0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/users/me",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"auth": null,
+			"time": 1519163282174,
+			"name": "GET /users/me",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "2ae877a5-58f5-29a2-1687-d225253ef744",
+			"headers": "x-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/todos/{{todoId}}",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1519186009513,
+			"name": "GET /todos/id",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "57aac997-7458-d2cb-48e4-b03ab7362e9e",
+			"headers": "Content-Type: application/json\nx-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/todos",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6a90597-3fd0-448b-a7a7-19185dbf23a9",
+						"type": "text/javascript",
+						"exec": [
+							"var body = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable('todoId', body._id);"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1519185989027,
+			"name": "POST /todos",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "var body = JSON.parse(responseBody);\npostman.setEnvironmentVariable('todoId', body._id);",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"text\": \"This is from postman\"\n}"
+		},
+		{
+			"id": "6a2f947d-8066-f21e-6092-c453d5bef66d",
+			"headers": "Content-Type: application/json\nx-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/todos/{{todoId}}",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1519186020763,
+			"name": "PATCH /todos/:id",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"text\": \"Update\",\n\t\"completed\":\"true\"\n}"
+		},
+		{
+			"id": "a354be18-d1bf-0877-d2b5-7a1fcb71cb5a",
+			"headers": "x-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/todos",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1519185812099,
+			"name": "GET /todos",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "a433330d-451e-8e50-8339-cc00d58518b8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/users/login",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c961cd87-3f4a-42b4-8640-a7dae722e17c",
+						"type": "text/javascript",
+						"exec": [
+							"var token = postman.getResponseHeader('x-auth');",
+							"postman.setEnvironmentVariable('x-auth', token);"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1519186176399,
+			"name": "POST /users/login",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "var token = postman.getResponseHeader('x-auth');\npostman.setEnvironmentVariable('x-auth', token);",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"email\": \"fred1@test.com\",\n\t\"password\": \"password!\"\n}"
+		},
+		{
+			"id": "adf5bfb9-ffa1-b203-9e68-76c2c6fa8653",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/users",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "316a6de2-42a6-48f2-8b76-5b02c855d2cb",
+						"type": "text/javascript",
+						"exec": [
+							"var token = postman.getResponseHeader('x-auth');",
+							"postman.setEnvironmentVariable('x-auth', token);"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1519185766971,
+			"name": "POST /users",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "var token = postman.getResponseHeader('x-auth');\npostman.setEnvironmentVariable('x-auth', token);",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"email\": \"fred1@test.com\",\n\t\"password\": \"password!\"\n}"
+		},
+		{
+			"id": "c6a5e31b-1555-1d7c-2814-d584f99d52ff",
+			"headers": "x-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/users/me/token",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1519185843417,
+			"name": "DELETE /users/me/token",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "fa9bc8e1-3ba9-a500-34ec-e49a9eb0d6cc",
+			"headers": "x-auth: {{x-auth}}\n",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{x-auth}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/todos/{{todoId}}",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1519186016569,
+			"name": "DEL /todos/:id",
+			"description": "",
+			"collectionId": "692100b9-487f-191b-d0d7-2ebf1a6be3f8",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		}
+	]
+}
